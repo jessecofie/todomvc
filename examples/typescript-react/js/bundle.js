@@ -42,8 +42,13 @@ var TodoApp = (function (_super) {
         }
         event.preventDefault();
         var val = ReactDOM.findDOMNode(this.refs["newField"]).value.trim();
+        var todoTitle = '';
+        var labels = [];
+        var labelsRegex = /@\S+/gmi;
         if (val) {
-            this.props.model.addTodo(val);
+            labels = val.match(labelsRegex);
+            todoTitle = val.replace(labelsRegex, '').trim();
+            this.props.model.addTodo(todoTitle, labels);
             ReactDOM.findDOMNode(this.refs["newField"]).value = '';
         }
     };
@@ -279,10 +284,11 @@ var TodoModel = (function () {
         utils_1.Utils.store(this.key, this.todos);
         this.onChanges.forEach(function (cb) { cb(); });
     };
-    TodoModel.prototype.addTodo = function (title) {
+    TodoModel.prototype.addTodo = function (title, labels) {
         this.todos = this.todos.concat({
             id: utils_1.Utils.uuid(),
             title: title,
+            labels: labels,
             completed: false
         });
         this.inform();

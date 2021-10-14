@@ -41,8 +41,13 @@ var TodoApp = (function (_super) {
         }
         event.preventDefault();
         var val = ReactDOM.findDOMNode(this.refs["newField"]).value.trim();
+        var todoTitle = '';
+        var labels = [];
+        var labelsRegex = /@\S+/gmi;
         if (val) {
-            this.props.model.addTodo(val);
+            labels = val.match(labelsRegex);
+            todoTitle = val.replace(labelsRegex, '').trim();
+            this.props.model.addTodo(todoTitle, labels);
             ReactDOM.findDOMNode(this.refs["newField"]).value = '';
         }
     };
