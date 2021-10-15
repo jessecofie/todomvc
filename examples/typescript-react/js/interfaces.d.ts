@@ -9,7 +9,7 @@ interface ITodoItemProps {
   key : string,
   todo : ITodo;
   editing? : boolean;
-  onSave: (val: any) => void;
+  onSave: (val: any, labels: string[]) => void;
   onDestroy: () => void;
   onEdit: ()  => void;
   onCancel: (event : any) => void;
@@ -38,7 +38,7 @@ interface ITodoModel {
   toggleAll(checked);
   toggle(todoToToggle);
   destroy(todo);
-  save(todoToSave, text);
+  save(todoToSave, text, labels);
   clearCompleted();
 }
 

@@ -75,8 +75,8 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
     this.setState({editing: todo.id});
   }
 
-  public save(todoToSave : ITodo, text : String) {
-    this.props.model.save(todoToSave, text);
+  public save(todoToSave : ITodo, text : String, labels : String[]) {
+    this.props.model.save(todoToSave, text, labels);
     this.setState({editing: null});
   }
 
