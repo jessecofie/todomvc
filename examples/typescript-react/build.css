@@ -1,0 +1,26 @@
+.tags {
+	position: absolute;
+    top: 0;
+    right: 60px;
+    bottom: 0;
+    max-width: 40%;
+    height: 100%;
+    line-height: 100%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.tag {
+	margin: 2px 1px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    background: #ebd8d7;
+    padding: 3.5px 5.5px;
+    border-radius: 6px;
+    line-height: 1;
+}
+
+.todo-list li .destroy {
+	margin-bottom: auto;
+}
