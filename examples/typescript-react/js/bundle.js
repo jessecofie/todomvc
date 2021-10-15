@@ -260,6 +260,9 @@ var TodoItem = (function (_super) {
             React.createElement("div", { className: "view" },
                 React.createElement("input", { className: "toggle", type: "checkbox", checked: this.props.todo.completed, onChange: this.props.onToggle }),
                 React.createElement("label", { onDoubleClick: function (e) { return _this.handleEdit(); } }, this.props.todo.title),
+                React.createElement("div", { className: "tags" }, this.props.todo.labels.map(function (tag, index) { return React.createElement("span", { key: index, className: "tag" },
+                    tag.replace(/^@/gmi, ''),
+                    ' '); })),
                 React.createElement("button", { className: "destroy", onClick: this.props.onDestroy })),
             React.createElement("input", { ref: "editField", className: "edit", value: this.state.editText, onBlur: function (e) { return _this.handleSubmit(e); }, onChange: function (e) { return _this.handleChange(e); }, onKeyDown: function (e) { return _this.handleKeyDown(e); } })));
     };
@@ -711,7 +714,7 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],10:[function(require,module,exports){
-(function (process){
+(function (process){(function (){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -804,7 +807,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 module.exports = checkPropTypes;
 
-}).call(this,require('_process'))
+}).call(this)}).call(this,require('_process'))
 },{"./lib/ReactPropTypesSecret":11,"_process":9}],11:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -820,7 +823,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 },{}],12:[function(require,module,exports){
-(function (process){
+(function (process){(function (){
 /** @license React v16.7.0
  * react-dom.development.js
  *
@@ -20907,7 +20910,7 @@ module.exports = reactDom;
   })();
 }
 
-}).call(this,require('_process'))
+}).call(this)}).call(this,require('_process'))
 },{"_process":9,"object-assign":8,"prop-types/checkPropTypes":10,"react":17,"scheduler":22,"scheduler/tracing":23}],13:[function(require,module,exports){
 /** @license React v16.7.0
  * react-dom.production.min.js
@@ -21160,7 +21163,7 @@ Ka,La,Ca.injectEventPluginsByName,qa,Ra,function(a){za(a,Qa)},Ib,Jb,Jd,Ea]}};fun
 var li={default:ki},mi=li&&ki||li;module.exports=mi.default||mi;
 
 },{"object-assign":8,"react":17,"scheduler":22}],14:[function(require,module,exports){
-(function (process){
+(function (process){(function (){
 'use strict';
 
 function checkDCE() {
@@ -21200,9 +21203,9 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = require('./cjs/react-dom.development.js');
 }
 
-}).call(this,require('_process'))
+}).call(this)}).call(this,require('_process'))
 },{"./cjs/react-dom.development.js":12,"./cjs/react-dom.production.min.js":13,"_process":9}],15:[function(require,module,exports){
-(function (process){
+(function (process){(function (){
 /** @license React v16.7.0
  * react.development.js
  *
@@ -23087,7 +23090,7 @@ module.exports = react;
   })();
 }
 
-}).call(this,require('_process'))
+}).call(this)}).call(this,require('_process'))
 },{"_process":9,"object-assign":8,"prop-types/checkPropTypes":10}],16:[function(require,module,exports){
 /** @license React v16.7.0
  * react.production.min.js
@@ -23115,7 +23118,7 @@ if(null!=b){void 0!==b.ref&&(h=b.ref,f=K.current);void 0!==b.key&&(g=""+b.key);v
 unstable_ConcurrentMode:x,unstable_Profiler:u,__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:K,assign:k}},Y={default:X},Z=Y&&X||Y;module.exports=Z.default||Z;
 
 },{"object-assign":8}],17:[function(require,module,exports){
-(function (process){
+(function (process){(function (){
 'use strict';
 
 if (process.env.NODE_ENV === 'production') {
@@ -23124,9 +23127,9 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = require('./cjs/react.development.js');
 }
 
-}).call(this,require('_process'))
+}).call(this)}).call(this,require('_process'))
 },{"./cjs/react.development.js":15,"./cjs/react.production.min.js":16,"_process":9}],18:[function(require,module,exports){
-(function (process){
+(function (process){(function (){
 /** @license React v0.12.0
  * scheduler-tracing.development.js
  *
@@ -23551,7 +23554,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
   })();
 }
 
-}).call(this,require('_process'))
+}).call(this)}).call(this,require('_process'))
 },{"_process":9}],19:[function(require,module,exports){
 /** @license React v0.12.0
  * scheduler-tracing.production.min.js
@@ -23565,7 +23568,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 'use strict';Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unstable_clear=function(a){return a()};exports.unstable_getCurrent=function(){return null};exports.unstable_getThreadID=function(){return++b};exports.unstable_trace=function(a,d,c){return c()};exports.unstable_wrap=function(a){return a};exports.unstable_subscribe=function(){};exports.unstable_unsubscribe=function(){};
 
 },{}],20:[function(require,module,exports){
-(function (process,global){
+(function (process,global){(function (){
 /** @license React v0.12.0
  * scheduler.development.js
  *
@@ -24270,9 +24273,9 @@ exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
 
-}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+}).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"_process":9}],21:[function(require,module,exports){
-(function (global){
+(function (global){(function (){
 /** @license React v0.12.0
  * scheduler.production.min.js
  *
@@ -24295,9 +24298,9 @@ exports.unstable_scheduleCallback=function(a,b){var d=-1!==k?k:exports.unstable_
 b=d.previous;b.next=d.previous=a;a.next=d;a.previous=b}return a};exports.unstable_cancelCallback=function(a){var b=a.next;if(null!==b){if(b===a)c=null;else{a===c&&(c=b);var d=a.previous;d.next=b;b.previous=d}a.next=a.previous=null}};exports.unstable_wrapCallback=function(a){var b=h;return function(){var d=h,e=k;h=b;k=exports.unstable_now();try{return a.apply(this,arguments)}finally{h=d,k=e,v()}}};exports.unstable_getCurrentPriorityLevel=function(){return h};
 exports.unstable_shouldYield=function(){return!f&&(null!==c&&c.expirationTime<l||w())};exports.unstable_continueExecution=function(){null!==c&&p()};exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNode=function(){return c};
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],22:[function(require,module,exports){
-(function (process){
+(function (process){(function (){
 'use strict';
 
 if (process.env.NODE_ENV === 'production') {
@@ -24306,9 +24309,9 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = require('./cjs/scheduler.development.js');
 }
 
-}).call(this,require('_process'))
+}).call(this)}).call(this,require('_process'))
 },{"./cjs/scheduler.development.js":20,"./cjs/scheduler.production.min.js":21,"_process":9}],23:[function(require,module,exports){
-(function (process){
+(function (process){(function (){
 'use strict';
 
 if (process.env.NODE_ENV === 'production') {
@@ -24317,5 +24320,5 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = require('./cjs/scheduler-tracing.development.js');
 }
 
-}).call(this,require('_process'))
+}).call(this)}).call(this,require('_process'))
 },{"./cjs/scheduler-tracing.development.js":18,"./cjs/scheduler-tracing.production.min.js":19,"_process":9}]},{},[1]);
