@@ -17,14 +17,21 @@ class TodoItem extends React.Component<ITodoItemProps, ITodoItemState> {
 
   constructor(props : ITodoItemProps){
     super(props);
-    this.state = { editText: this.props.todo.title };
+    this.state = { editText: this.props.todo.title + " " + this.props.todo.labels.join(" ") };
   }
 
   public handleSubmit(event : React.FormEvent) {
     var val = this.state.editText.trim();
+
+		var todoTitle = '';
+		var labels = [];
+		var labelsRegex = /@\S+/gmi;
+
     if (val) {
-      this.props.onSave(val);
-      this.setState({editText: val});
+			labels = val.match(labelsRegex);
+			todoTitle = val.replace(labelsRegex, '').trim();
+      this.props.onSave(todoTitle, labels);
+      this.setState({editText: todoTitle + " " + labels.join(" ")});
     } else {
       this.props.onDestroy();
     }
@@ -32,12 +39,12 @@ class TodoItem extends React.Component<ITodoItemProps, ITodoItemState> {
 
   public handleEdit() {
     this.props.onEdit();
-    this.setState({editText: this.props.todo.title});
+    this.setState({editText: this.props.todo.title + " " + this.props.todo.labels.join(" ")});
   }
 
   public handleKeyDown(event : React.KeyboardEvent) {
     if (event.keyCode === ESCAPE_KEY) {
-      this.setState({editText: this.props.todo.title});
+      this.setState({editText: this.props.todo.title + " " + this.props.todo.labels.join(" ")});
       this.props.onCancel(event);
     } else if (event.keyCode === ENTER_KEY) {
       this.handleSubmit(event);
@@ -94,6 +101,9 @@ class TodoItem extends React.Component<ITodoItemProps, ITodoItemState> {
           <label onDoubleClick={ e => this.handleEdit() }>
             {this.props.todo.title}
           </label>
+					<div className="tags">
+						{this.props.todo.labels.map((tag: string, index: number) => <span key={index} className="tag">{tag.replace(/^@/gmi, '')}{' '}</span>)}
+					</div>
           <button className="destroy" onClick={this.props.onDestroy} />
         </div>
         <input

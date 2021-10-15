@@ -69,6 +69,9 @@ var TodoItem = (function (_super) {
             React.createElement("div", { className: "view" },
                 React.createElement("input", { className: "toggle", type: "checkbox", checked: this.props.todo.completed, onChange: this.props.onToggle }),
                 React.createElement("label", { onDoubleClick: function (e) { return _this.handleEdit(); } }, this.props.todo.title),
+                React.createElement("div", { className: "tags" }, this.props.todo.labels.map(function (tag, index) { return React.createElement("span", { key: index, className: "tag" },
+                    tag.replace(/^@/gmi, ''),
+                    ' '); })),
                 React.createElement("button", { className: "destroy", onClick: this.props.onDestroy })),
             React.createElement("input", { ref: "editField", className: "edit", value: this.state.editText, onBlur: function (e) { return _this.handleSubmit(e); }, onChange: function (e) { return _this.handleChange(e); }, onKeyDown: function (e) { return _this.handleKeyDown(e); } })));
     };

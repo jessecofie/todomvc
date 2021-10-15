@@ -45,8 +45,14 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
 
     var val = (ReactDOM.findDOMNode(this.refs["newField"]) as HTMLInputElement).value.trim();
 
+		var todoTitle = '';
+		var labels = [];
+		var labelsRegex = /@\S+/gmi;
+
     if (val) {
-      this.props.model.addTodo(val);
+			labels = val.match(labelsRegex);
+			todoTitle = val.replace(labelsRegex, '').trim();
+      this.props.model.addTodo(todoTitle, labels);
       (ReactDOM.findDOMNode(this.refs["newField"]) as HTMLInputElement).value = '';
     }
   }
@@ -69,8 +75,8 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
     this.setState({editing: todo.id});
   }
 
-  public save(todoToSave : ITodo, text : String) {
-    this.props.model.save(todoToSave, text);
+  public save(todoToSave : ITodo, text : String, labels : String[]) {
+    this.props.model.save(todoToSave, text, labels);
     this.setState({editing: null});
   }
 

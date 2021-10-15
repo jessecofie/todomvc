@@ -1,6 +1,7 @@
 interface ITodo {
   id: string,
   title: string,
+	labels: string[],
   completed: boolean
 }
 
@@ -8,7 +9,7 @@ interface ITodoItemProps {
   key : string,
   todo : ITodo;
   editing? : boolean;
-  onSave: (val: any) => void;
+  onSave: (val: any, labels: string[]) => void;
   onDestroy: () => void;
   onEdit: ()  => void;
   onCancel: (event : any) => void;
@@ -33,11 +34,11 @@ interface ITodoModel {
   onChanges : Array<any>;
   subscribe(onChange);
   inform();
-  addTodo(title : string);
+  addTodo(title : string, labels : string[]);
   toggleAll(checked);
   toggle(todoToToggle);
   destroy(todo);
-  save(todoToSave, text);
+  save(todoToSave, text, labels);
   clearCompleted();
 }
 
